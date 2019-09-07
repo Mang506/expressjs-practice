@@ -7,11 +7,11 @@ const feedbackRoute = require('./feedback');
 
 module.exports = () => {
   router.get('/', (req, res, next) => {
-    return res.send('Index');
+    return res.render('index');
   });
   
-  router.use('/speakers', speakersRoute());
-  router.use('/feedback', feedbackRoute());
+  router.use('/speakers', speakersRoute()); // loads index for speakers page
+  router.use('/feedback', feedbackRoute()); // loads index for feedback page
 
   return router;
 };
