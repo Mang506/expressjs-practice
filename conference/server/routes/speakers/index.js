@@ -2,12 +2,12 @@ const express = require('express');
 
 const router = express.Router();
 
-module.exports = () => {
+module.exports = () => { // returns all speakers
   router.get('/', (req, res, next) => {
-    return res.send('All Speakers');
+    return res.render('speakers'); // accesses view/speakers/index
   });
 
-  router.get('/:name', (req, res, next) => {
+  router.get('/:name', (req, res, next) => { // returns individual speaker
     return res.send(`Speaker detail page for ${req.params.name}`);
   });
 
