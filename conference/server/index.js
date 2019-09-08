@@ -1,14 +1,18 @@
 const express = require('express');
 const createError = require('http-errors');
 const path = require('path');
-
+const configs = require('./config');
 const app = express();
+
+const config = configs[app.get('env')];
 
 app.set('view engine', 'pug'); // set pug as template engine
 if(app.get('env') === 'development'){
   app.locals.pretty = true; // human readable html if in dev
 }
 app.set('views', path.join(__dirname, './views')); //default: views folder in application root directory
+app.locals.title = config.sitename; //global variable
+
 
 const routes = require('./routes'); // loads routes module
 app.use(express.static('public')); // serves static files
